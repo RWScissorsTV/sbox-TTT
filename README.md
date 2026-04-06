@@ -30,6 +30,9 @@ Movement and bunny hopping are controlled by:
 `ttt_bhop_enabled`, `ttt_bhop_autojump`, `ttt_bhop_air_acceleration`, `ttt_bhop_air_control`, `ttt_bhop_ground_friction`, and `ttt_bhop_speed_cap_multiplier`.
 Set the speed cap multiplier to `0` to fully remove the bhop jump speed cap.
 
+AFK handling is controlled by:
+`ttt_afk_timer`, `ttt_afk_auto_kick`, `ttt_afk_fun_death`, and `ttt_afk_kick_delay`.
+
 Karma affects both outgoing damage and movement speed.
 The minimum movement speed penalty floor is controlled by `ttt_karma_min_speed_scale`.
 

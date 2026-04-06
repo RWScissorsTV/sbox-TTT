@@ -11,15 +11,118 @@
         return;
     }
 
-    <div style="width: 50%">
+    @if (_highlights?.Count > 0)
+    {
+        <div class="highlights">
+            @foreach (var highlight in _highlights)
+            {
+                <div class="highlight-card">
+                    <text class="highlight-title">@highlight.Title</text>
+                    <text class="highlight-primary">@highlight.PrimaryText</text>
+                    <text class="highlight-secondary">@highlight.SecondaryText</text>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="roles-column" style="width: 50%">
         <RoleList Players=@_innocents Role=@(new TTT.Innocent()) />
     </div>
-    <div style="flex-direction: column; width: 50%">
+    <div class="roles-column" style="width: 50%">
         <RoleList Players=@_detectives Role=@(new TTT.Detective()) />
         <RoleList Players=@_traitors Role=@(new TTT.Traitor()) />
     </div>
 </root>
 
 <style>
-    RoleSummary {}
+    RoleSummary {
+        gap: 10px;
+        flex-wrap: wrap;
+        opacity: 1;
+        transition: opacity 0.2s ease-out;
+
+        .highlights {
+            width: 100%;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .highlight-card {
+            min-width: 210px;
+            flex-grow: 1;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #0a0a0acc;
+            transition: transform 0.28s ease-out, opacity 0.28s ease-out, box-shadow 0.2s ease-out;
+            transform: translateY(0) scale(1);
+            opacity: 1;
+
+            &:hover {
+                transform: translateY(-2px) scale(1.01);
+                box-shadow: 0 10px 24px #00000044;
+            }
+
+            &:intro {
+                opacity: 0;
+                transform: translateY(12px) scale(0.96);
+            }
+        }
+
+        .highlight-title {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+
+        .highlight-primary {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .highlight-secondary {
+            font-size: 13px;
+            opacity: 0.75;
+            margin-top: 4px;
+        }
+
+        .roles-column {
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.24s ease-out, opacity 0.24s ease-out;
+
+            &:intro {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        .highlight-card:nth-child(1) {
+            transition-delay: 0.02s;
+        }
+
+        .highlight-card:nth-child(2) {
+            transition-delay: 0.06s;
+        }
+
+        .highlight-card:nth-child(3) {
+            transition-delay: 0.1s;
+        }
+
+        .highlight-card:nth-child(4) {
+            transition-delay: 0.14s;
+        }
+
+        .roles-column:nth-child(2) {
+            transition-delay: 0.08s;
+        }
+
+        .roles-column:nth-child(3) {
+            transition-delay: 0.14s;
+        }
+
+        &:intro {
+            opacity: 0;
+        }
+    }
 </style>

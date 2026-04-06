@@ -1,0 +1,64 @@
+@namespace TTT.UI
+
+<root>
+	<text class="h1">How To Play</text>
+	<text>
+		TTT is a social deduction mode. Most players are Innocents, a few are Traitors, and occasionally a Detective helps the Innocent team with special equipment.
+	</text>
+
+	<text class="h1">Role Goals</text>
+	<text><strong>Innocent:</strong> survive, gather information, and identify suspicious behavior.</text>
+	<text><strong>Detective:</strong> lead investigations, confirm bodies, and use your utility carefully.</text>
+	<text><strong>Traitor:</strong> eliminate the Innocent team without exposing yourself too early.</text>
+
+	<text class="h1">Core Flow</text>
+	<text>Stick with the group early, but pay attention to who disappears, who lies, and who is found near bodies.</text>
+	<text>When you find a corpse, search it for role and death information. Detectives can also collect DNA from identified bodies.</text>
+	<text>If your server allows body hanging, you can carry and hang corpses with Hands to create bait or confusion.</text>
+
+	<text class="h1">Karma And RDM</text>
+	<text>Randomly damaging or killing teammates will hurt your karma. Low karma reduces your damage and movement speed, and very low karma can get you kicked.</text>
+	<text>If you are killed unfairly, use the spectator RDM prompt or the Global Tribunal page to file a report when available.</text>
+
+	<text class="h1">Important Keys</text>
+	<div><text>Use / Search:</text><inputglyph action=@InputAction.Use /></div>
+	<div><text>Walk:</text><inputglyph action=@InputAction.Run /></div>
+	<div><text>Voice Chat:</text><inputglyph action=@InputAction.Voice /></div>
+	<div><text>Quick Shop / Role Menu:</text><inputglyph action=@InputAction.View /></div>
+	<div><text>Scoreboard / Menu:</text><inputglyph action=@InputAction.Score /></div>
+
+	<text class="h1">Helpful Tips</text>
+	<text>Do not instantly trust loud accusations. Ask where a player was, what weapon they heard, and who confirmed the body.</text>
+	<text>Traitors win more rounds by looking helpful than by sprinting for early kills.</text>
+	<text>Detectives are high-value targets, so staying alive is often more important than forcing a risky duel.</text>
+</root>
+
+<style>
+	HelpPage {
+		flex-direction: column;
+		justify-content: flex-start;
+		overflow: scroll;
+		width: 100%;
+		color: white;
+		flex-shrink: 0;
+		font-size: 16px;
+		gap: 8px;
+
+		.h1 {
+			color: white;
+			font-weight: bold;
+			margin-top: 10px;
+		}
+
+		div {
+			align-items: center;
+			flex-shrink: 0;
+		}
+
+		inputglyph,
+		text {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+	}
+</style>

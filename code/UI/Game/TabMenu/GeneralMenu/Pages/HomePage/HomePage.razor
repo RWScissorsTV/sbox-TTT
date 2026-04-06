@@ -4,6 +4,7 @@
 @namespace TTT.UI
 
 <root>
+	<button class="alt" icon="help" @onclick=@GoToHelpPage>How To Play</button>
 	<button class="alt" icon="leaderboard" @onclick=@GoToRoundSummaryPage>Round Summary</button>
 	@if (TTT.GameManager.TribunalEnabled)
 	{
@@ -24,6 +25,11 @@
 	public void GoToRoundSummaryPage()
 	{
 		GeneralMenu.Instance.AddPage(new RoundSummaryPage());
+	}
+
+	public void GoToHelpPage()
+	{
+		GeneralMenu.Instance.AddPage(new HelpPage());
 	}
 
 	public void GoToAdminPage()

@@ -77,6 +77,15 @@ public partial class GameManager
 	#region AFK Timers
 	[ConVar.Replicated( "ttt_afk_timer", Help = "The amount of time before a player is forced to being a spectator.", Saved = true )]
 	public static int AFKTimer { get; set; } = 180;
+
+	[ConVar.Server( "ttt_afk_auto_kick", Help = "When enabled, AFK players are kicked after the AFK death sequence instead of only becoming forced spectators.", Saved = true )]
+	public static bool AfkAutoKick { get; set; } = false;
+
+	[ConVar.Server( "ttt_afk_fun_death", Help = "When enabled, AFK players trigger a theatrical self-destruct before being removed from the round.", Saved = true )]
+	public static bool AfkFunDeath { get; set; } = true;
+
+	[ConVar.Server( "ttt_afk_kick_delay", Help = "How long to wait after the AFK death sequence before kicking the player.", Saved = true )]
+	public static float AfkKickDelay { get; set; } = 1.5f;
 	#endregion
 
 	#region Credits
