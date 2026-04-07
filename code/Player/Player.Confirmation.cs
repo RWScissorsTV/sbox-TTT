@@ -150,7 +150,7 @@ public partial class Player
 		Status = status;
 	}
 
-	[Broadcast( NetPermission.HostOnly )]
+	[Rpc.Broadcast( NetFlags.HostOnly )]
 	private void BroadcastSetStatusSingle( Connection to, PlayerStatus status )
 	{
 		if ( Rpc.Caller == to )

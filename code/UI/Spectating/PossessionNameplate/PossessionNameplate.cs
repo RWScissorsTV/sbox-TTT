@@ -13,8 +13,7 @@ public partial class PossessionNameplate : WorldPanel
 		SceneObject.Flags.ViewModelLayer = true;
 	}
 
-	[Event.Tick]
-	private void FrameUpdate()
+	public override void Tick()
 	{
 		var tx = Transform;
 		tx.Position = _prop.WorldSpaceBounds.Center + (Vector3.Up * _prop.Model.RenderBounds.Maxs);

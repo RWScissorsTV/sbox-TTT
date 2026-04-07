@@ -2,7 +2,7 @@ namespace TTT;
 
 [Category( "Equipment" )]
 [ClassName( "ttt_equipment_c4" )]
-[Hide]
+[HideInEditor]
 [Title( "C4" )]
 public class C4 : Deployable
 {

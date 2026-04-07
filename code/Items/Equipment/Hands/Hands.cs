@@ -14,7 +14,7 @@ public interface IGrabbable
 }
 
 [ClassName( "ttt_equipment_hands" )]
-[Hide]
+[HideInEditor]
 [Title( "Hands" )]
 public partial class Hands : Carriable
 {

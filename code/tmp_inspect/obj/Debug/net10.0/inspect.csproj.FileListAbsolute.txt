@@ -1,0 +1,15 @@
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\bin\Debug\net10.0\inspect.exe
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\bin\Debug\net10.0\inspect.deps.json
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\bin\Debug\net10.0\inspect.runtimeconfig.json
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\bin\Debug\net10.0\inspect.dll
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\bin\Debug\net10.0\inspect.pdb
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.AssemblyInfoInputs.cache
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.AssemblyInfo.cs
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.csproj.CoreCompileInputs.cache
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.sourcelink.json
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.dll
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\refint\inspect.dll
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.pdb
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\inspect.genruntimeconfig.cache
+C:\Users\Shadow\Documents\GitHub\sbox-TTT\code\tmp_inspect\obj\Debug\net10.0\ref\inspect.dll

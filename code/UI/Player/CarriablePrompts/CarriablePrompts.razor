@@ -2,6 +2,8 @@
 @using Sandbox;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 @if (TTT.Player.Local is not TTT.Player player || player.ActiveCarriable is null)
 {
@@ -51,3 +53,4 @@
         }
     }
 </style>
+

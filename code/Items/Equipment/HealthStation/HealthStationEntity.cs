@@ -23,8 +23,7 @@ public sealed partial class HealthStationEntity : Component, ICarriableHint
 		Planter = planter;
 	}
 
-	[Event.Tick]
-	private void OnTick()
+	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost || StoredHealth >= 200f )
 			return;

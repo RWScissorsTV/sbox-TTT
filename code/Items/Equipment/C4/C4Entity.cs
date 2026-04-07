@@ -124,8 +124,7 @@ public sealed partial class C4Entity : Component, ICarriableHint
 		}
 	}
 
-	[Event.Tick]
-	private void OnTick()
+	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost || !IsArmed )
 			return;

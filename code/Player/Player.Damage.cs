@@ -187,13 +187,13 @@ public partial class Player
 		LastDamage = default;
 	}
 
-	[Broadcast( NetPermission.HostOnly )]
+	[Rpc.Broadcast( NetFlags.HostOnly )]
 	private void BroadcastDeafen( float strength )
 	{
 		Audio.SetEffect( "flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength );
 	}
 
-	[Broadcast( NetPermission.HostOnly )]
+	[Rpc.Broadcast( NetFlags.HostOnly )]
 	private void BroadcastDamageInfo( DamageInfo info )
 	{
 		LastAttacker = info.Attacker;

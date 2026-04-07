@@ -2,6 +2,8 @@
 @using Sandbox;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 @{
     var backgroundColor = Player.Role is not NoneRole and not Innocent ? Player.Role.Color.WithAlpha( 0.10f ).Hex : "#4b4b4b15";
@@ -91,3 +93,4 @@
         }
     }
 </style>
+

@@ -1,6 +1,8 @@
 @using System;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 <root class="background-color-primary @(Carriable.IsActive ? "active" : "")">
     <div class="slot-number" style="background-color: @(Hud.DisplayedPlayer.Role.Color.Hex)">

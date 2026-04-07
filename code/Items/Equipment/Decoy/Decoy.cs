@@ -1,3 +1,5 @@
+using Sandbox;
+
 namespace TTT;
 
 [Category( "Equipment" )]

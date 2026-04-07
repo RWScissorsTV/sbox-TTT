@@ -23,8 +23,7 @@ public partial class Radar : Perk
 			UI.WorldPoints.Instance?.DeletePoints<UI.RadarPoint>();
 	}
 
-	[Event.Tick]
-	private void OnTick()
+	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost )
 			return;

@@ -21,8 +21,7 @@ public partial class RolePlate : Component
 		_roleWorldPanel = null;
 	}
 
-	[Event.Tick]
-	private void FrameUpdate()
+	protected override void OnUpdate()
 	{
 		var player = Components.Get<Player>( FindMode.InSelf );
 		if ( player is null || _roleWorldPanel is null )

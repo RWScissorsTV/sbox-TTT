@@ -141,8 +141,7 @@ public partial class DNAScanner : Carriable
 		return null;
 	}
 
-	[Event.Tick]
-	private void OnTick()
+	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost || Owner is null )
 			return;

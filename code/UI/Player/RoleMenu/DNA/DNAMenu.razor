@@ -4,6 +4,8 @@
 @using System.Linq;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 @if (TTT.Player.Local is not TTT.Player player || !_dnaScanner.IsValid())
 {

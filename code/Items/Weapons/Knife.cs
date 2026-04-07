@@ -135,8 +135,7 @@ public partial class Knife : Carriable
 		ViewModelRenderer?.Set( "fire", true );
 	}
 
-	[Event.Tick]
-	private void ThrowTick()
+	protected override void OnUpdate()
 	{
 		if ( !Networking.IsHost || !_isThrown )
 			return;

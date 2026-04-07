@@ -2,6 +2,8 @@
 @using TTT.UI;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 @if (TTT.Player.Local is not TTT.Player player || !player.IsAlive)
 {

@@ -4,6 +4,8 @@
 @using global::TTT;
 
 @namespace TTT.UI
+@using Sandbox.UI;
+@inherits Panel
 
 @if (!TTT.GameManager.LocalClientHasAdminAccess)
 {
@@ -223,3 +225,4 @@
         }
     }
 </style>
+
