@@ -208,7 +208,6 @@ public abstract partial class Carriable : Component
 	public bool IsUsable( Player user ) => Owner is null && user is not null && user.IsAlive;
 
 #if SANDBOX && DEBUG
-	[Event.Hotload]
 	private void OnHotload()
 	{
 		Info = GameResource.GetInfo<CarriableInfo>( TypeLibrary.GetType( GetType() )?.ClassName ?? "" );

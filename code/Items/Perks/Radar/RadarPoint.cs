@@ -18,7 +18,7 @@ public partial class RadarPoint : Panel
 		WorldPoints.Instance.AddChild( this );
 	}
 
-	public override void Tick()
+	protected override void OnUpdate()
 	{
 		_distance = $"{Player.Local?.WorldPosition.Distance( _radarData.Position ).SourceUnitsToMeters():n0}m";
 		_screenPos = _radarData.Position.ToScreen();

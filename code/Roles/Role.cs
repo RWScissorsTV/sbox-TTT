@@ -139,7 +139,6 @@ public abstract class Role : IEquatable<Role>, IEquatable<string>
 	public override int GetHashCode() => Info.ResourceId.GetHashCode();
 
 #if SANDBOX && DEBUG
-	[Event.Hotload]
 	private void OnHotload()
 	{
 		Info = GameResource.GetInfo<RoleInfo>( GetType() );
