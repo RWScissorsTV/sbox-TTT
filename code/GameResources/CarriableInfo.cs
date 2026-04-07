@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace TTT;
 
-[GameResource( "Carriable", "carri", "TTT carriable template.", Icon = "inventory_2" )]
+[AssetType]
 public class CarriableInfo : ItemInfo
 {
 	[Category( "Important" )]

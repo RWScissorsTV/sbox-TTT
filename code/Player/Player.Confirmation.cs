@@ -137,14 +137,14 @@ public partial class Player
 		PlayersKilled.Clear();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastConfirmDeath( Player confirmer )
 	{
 		Confirmer = confirmer;
 		Status = PlayerStatus.ConfirmedDead;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSetStatus( PlayerStatus status )
 	{
 		Status = status;
@@ -157,3 +157,4 @@ public partial class Player
 			Status = status;
 	}
 }
+

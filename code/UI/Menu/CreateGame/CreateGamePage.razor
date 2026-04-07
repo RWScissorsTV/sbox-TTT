@@ -1,6 +1,7 @@
 @using Sandbox;
 @using Sandbox.MenuSystem;
 @using Sandbox.UI;
+@using TTT.UI;
 @using System;
 @using System.Collections.Generic;
 
@@ -29,7 +30,7 @@
 
 			<div class="form-group">
 				<label class="setting-name">Server Name</label>
-				<TextEntry Value:bind=@Game.Menu.Lobby.Title Tooltip="Server Title"> </TextEntry>
+				<Sandbox.UI.TextEntry Value:bind=@Game.Menu.Lobby.Title> </Sandbox.UI.TextEntry>
 			</div>
 
 			<div class="form-group">

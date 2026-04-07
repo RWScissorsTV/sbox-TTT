@@ -22,12 +22,12 @@ public class Scout : Weapon
 		_defaultFOV = Game.ActiveScene?.Camera?.FieldOfView ?? 90f;
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( !IsProxy && Input.Pressed( InputAction.SecondaryAttack ) )
 			SetScoped( !IsScoped );
 
-		base.Simulate( player );
+		base.Simulate();
 	}
 
 	public override void BuildInput()

@@ -43,7 +43,7 @@ public abstract class Deployable : Carriable
 		_ghostRenderer = null;
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( !Networking.IsHost )
 			return;
@@ -80,9 +80,9 @@ public abstract class Deployable : Carriable
 		OnDeploy();
 	}
 
-	public override void FrameSimulate( Player player )
+	public override void FrameSimulate()
 	{
-		base.FrameSimulate( player );
+		base.FrameSimulate();
 
 		if ( _ghostEntity is null || _ghostRenderer is null )
 			return;

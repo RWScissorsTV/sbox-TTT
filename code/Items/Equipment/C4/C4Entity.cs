@@ -124,7 +124,7 @@ public sealed partial class C4Entity : Component, ICarriableHint
 		}
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void OnTick()
 	{
 		if ( !Networking.IsHost || !IsArmed )
@@ -212,14 +212,14 @@ public sealed partial class C4Entity : Component, ICarriableHint
 		FindById( goId )?.GameObject.Destroy();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastCloseArmMenu()
 	{
 		if ( UI.FullScreenHintMenu.Instance?.ActivePanel is UI.C4ArmMenu )
 			UI.FullScreenHintMenu.Instance.Close();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastC4Marker()
 	{
 		if ( Player.Local?.Team != Team.Traitors )
@@ -246,3 +246,4 @@ public class C4Note : Component
 {
 	public int SafeWireNumber { get; set; }
 }
+

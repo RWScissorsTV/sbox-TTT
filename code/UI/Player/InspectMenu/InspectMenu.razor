@@ -12,8 +12,8 @@
         <div style="flex-direction: column">
             <div class="header-panel">
                 <img src="avatar:@_corpse.Player.SteamId" class="avatar-image box-shadow circle" />
-                <text class="role-label" style="color: @_corpse.Player.Role.Color.Hex">@_corpse.Player.Role.Title</text>
-                <text class="player-label">@_corpse.Player.SteamName</text>
+                <span class="role-label" style="color: @_corpse.Player.Role.Color.Hex">@_corpse.Player.Role.Title</span>
+                <span class="player-label">@_corpse.Player.SteamName</span>
             </div>
             <div>
                 @if (_corpse.Player.IsConfirmedDead && player.IsAlive)
@@ -27,9 +27,9 @@
             </div>
         </div>
         <div @ref="IconsContainer" class="icons-container"></div>
-        <text class="active-text @(_selectedInspectEntry is not null ? "fade-in" : "")">
+        <span class="active-text @(_selectedInspectEntry is not null ? "fade-in" : "")">
             @_selectedInspectEntry?.ActiveText
-        </text>
+        </span>
     </div>
 </root>
 

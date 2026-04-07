@@ -23,10 +23,10 @@
     <div class="layout">
         <div class="column">
             <div class="section background-color-secondary rounded">
-                <text class="section-title">RDM Reports (@Reports.Count)</text>
+                <span class="section-title">RDM Reports (@Reports.Count)</span>
                 @if (!Reports.Any())
                 {
-                    <text class="empty">No reports yet.</text>
+                    <span class="empty">No reports yet.</span>
                 }
                 else
                 {
@@ -74,10 +74,10 @@
 
         <div class="column narrow">
             <div class="section background-color-secondary rounded">
-                <text class="section-title">Recent Logs (@Logs.Count)</text>
+                <span class="section-title">Recent Logs (@Logs.Count)</span>
                 @if (!Logs.Any())
                 {
-                    <text class="empty">No moderation logs available.</text>
+                    <span class="empty">No moderation logs available.</span>
                 }
                 else
                 {

@@ -75,7 +75,7 @@ public partial class Player
 		BroadcastOnKilled();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastOnKilled()
 	{
 		if ( !IsProxy )
@@ -204,3 +204,4 @@ public partial class Player
 			Event.Run( TTTEvent.Player.TookDamage, this );
 	}
 }
+

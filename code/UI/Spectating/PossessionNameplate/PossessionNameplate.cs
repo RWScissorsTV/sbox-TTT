@@ -13,7 +13,7 @@ public partial class PossessionNameplate : WorldPanel
 		SceneObject.Flags.ViewModelLayer = true;
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void FrameUpdate()
 	{
 		var tx = Transform;

@@ -22,7 +22,7 @@ public sealed partial class PoltergeistEntity : Component
 			GameObject.Parent = parent;
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void OnTick()
 	{
 		if ( !Networking.IsHost )

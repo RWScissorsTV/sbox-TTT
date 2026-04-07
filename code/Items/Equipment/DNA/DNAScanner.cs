@@ -33,7 +33,7 @@ public partial class DNAScanner : Carriable
 	private const float ChargePerSecond = 2.2f;
 	private UI.WorldMarker _marker;
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( Input.Pressed( InputAction.PrimaryAttack ) )
 			FetchDNA();
@@ -141,7 +141,7 @@ public partial class DNAScanner : Carriable
 		return null;
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void OnTick()
 	{
 		if ( !Networking.IsHost || Owner is null )
@@ -153,7 +153,7 @@ public partial class DNAScanner : Carriable
 			Scan();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastUpdateMarker( Connection to, Vector3 pos )
 	{
 		if ( Connection.Local != to )
@@ -178,7 +178,7 @@ public partial class DNAScanner : Carriable
 		UI.WorldPoints.Instance?.AddChild( scanner._marker );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastDeleteMarker( Connection to )
 	{
 		if ( Connection.Local != to )
@@ -188,7 +188,7 @@ public partial class DNAScanner : Carriable
 		scanner?._marker?.Delete( true );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastInfoEntry( Connection to, string message )
 	{
 		if ( Connection.Local != to )
@@ -200,7 +200,7 @@ public partial class DNAScanner : Carriable
 
 public sealed partial class DNA : Component
 {
-	public int Id { get; private set; }
+	public new int Id { get; private set; }
 	private static int _internalId = Game.Random.Int( 0, 500 );
 
 	public string SourceName { get; private set; }
@@ -250,3 +250,4 @@ public sealed partial class DNA : Component
 		_internalId = Game.Random.Int( 0, 500 );
 	}
 }
+

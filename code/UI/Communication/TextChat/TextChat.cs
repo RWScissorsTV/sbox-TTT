@@ -164,7 +164,7 @@ public partial class TextChat : Panel
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastChatEntryTo( Connection to, ulong playerId, string playerName, string message, Channel channel, int roleId = -1 )
 	{
 		if ( Connection.Local != to )
@@ -173,7 +173,7 @@ public partial class TextChat : Panel
 		AddChatEntryLocal( playerId, playerName, message, channel, roleId );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastChatEntryAll( ulong playerId, string playerName, string message, Channel channel, int roleId = -1 )
 	{
 		AddChatEntryLocal( playerId, playerName, message, channel, roleId );
@@ -195,13 +195,13 @@ public partial class TextChat : Panel
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastInfoEntry( string message )
 	{
 		Instance?.AddEntry( new TextChatEntry( message, Color.FromBytes( 253, 196, 24 ) ) );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastInfoEntryTo( Connection to, string message )
 	{
 		if ( Connection.Local != to )
@@ -241,3 +241,4 @@ public partial class TextEntry : Sandbox.UI.TextEntry
 		base.OnButtonTyped( e );
 	}
 }
+

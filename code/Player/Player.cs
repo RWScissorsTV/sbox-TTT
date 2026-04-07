@@ -142,7 +142,7 @@ public partial class Player : Component
 		BroadcastRespawn();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastRespawn()
 	{
 		DeleteFlashlight();
@@ -394,3 +394,4 @@ public partial class Player : Component
 		DeleteFlashlight();
 	}
 }
+

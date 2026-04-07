@@ -2,7 +2,7 @@ using Sandbox;
 
 namespace TTT;
 
-[GameResource( "Weapon", "weapon", "TTT weapon template.", Icon = "🔫" )]
+[AssetType]
 public class WeaponInfo : CarriableInfo
 {
 	[Category( "Sounds" ), ResourceType( "sound" )]

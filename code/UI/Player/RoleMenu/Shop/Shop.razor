@@ -22,7 +22,7 @@
             @onmouseout=@(() => _selectedItem = null) />
         }
     </div>
-    <text class="description @(_selectedItem is not null ? "fade-in" : "")">@_selectedItem?.Description</text>
+    <span class="description @(_selectedItem is not null ? "fade-in" : "")">@_selectedItem?.Description</span>
 </root>
 
 @code {

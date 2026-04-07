@@ -13,7 +13,7 @@ public class GrabbableCorpse : IGrabbable
 	private readonly Player _owner;
 	private readonly Corpse _corpse;
 	private PhysicsBody _handPhysicsBody;
-	private FixedJoint _joint;
+	private Sandbox.Physics.FixedJoint _joint;
 
 	public GrabbableCorpse( Player player, Corpse corpse )
 	{

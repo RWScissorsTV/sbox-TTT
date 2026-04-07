@@ -42,7 +42,7 @@ public partial class Teleporter : Carriable
 		_particle = null;
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( IsTeleporting )
 		{
@@ -50,7 +50,7 @@ public partial class Teleporter : Carriable
 			{
 				var attachment = Owner.Components.Get<SkinnedModelRenderer>()?.GetAttachment( "spine" );
 				if ( attachment.HasValue )
-					_particle = SceneParticles.Play( Scene, "particles/teleporter/teleport.vpcf", attachment.Value );
+					_particle = SceneParticles.Play( Owner.Scene, "particles/teleporter/teleport.vpcf" );
 			}
 
 			if ( TimeSinceStartedTeleporting >= TeleportTime / 2 )

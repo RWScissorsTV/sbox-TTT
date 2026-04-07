@@ -90,7 +90,7 @@ public partial class RoleSummary : Panel
 		BroadcastSendData( _latestSummaryJson );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastSendData( string snapshotJson )
 	{
 		var snapshot = JsonSerializer.Deserialize<RoundSummarySnapshot>( snapshotJson ?? string.Empty, _jsonOptions ) ?? new RoundSummarySnapshot();
@@ -102,7 +102,7 @@ public partial class RoleSummary : Panel
 		(Instance as RoleSummary)?.StateHasChanged();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void ClearData()
 	{
 		_innocents = new();
@@ -122,7 +122,7 @@ public partial class RoleSummary : Panel
 		BroadcastSendDataTo( Rpc.Caller, _latestSummaryJson );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastSendDataTo( Connection to, string snapshotJson )
 	{
 		if ( Connection.Local != to )
@@ -250,3 +250,4 @@ public partial class RoleSummary : Panel
 		public List<RoundHighlight> Highlights { get; set; } = new();
 	}
 }
+

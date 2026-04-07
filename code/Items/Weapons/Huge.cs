@@ -12,9 +12,9 @@ public class Huge : Weapon
 	private const string BulletsBodyGroup = "bullets";
 	private const int MaxBulletsChoice = 7;
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
-		base.Simulate( player );
+		base.Simulate();
 
 		// As ammo decreases, update the viewmodel "bullets" body group.
 		ViewModelRenderer?.SetBodyGroup( BulletsBodyGroup, Math.Min( AmmoClip, MaxBulletsChoice ) );

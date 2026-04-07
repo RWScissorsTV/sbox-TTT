@@ -94,7 +94,7 @@ public partial class Player
 		Role = TypeLibrary.Create<Role>( roleInfo.ClassName );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSetRole( Connection to, RoleInfo roleInfo )
 	{
 		if ( Rpc.Caller == to || (IsProxy && !Networking.IsHost) )
@@ -104,10 +104,11 @@ public partial class Player
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSetRoleToAll( RoleInfo roleInfo )
 	{
 		SetRole( roleInfo );
 		IsRoleKnown = true;
 	}
 }
+

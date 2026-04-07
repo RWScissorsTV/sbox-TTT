@@ -162,7 +162,7 @@ public partial class InspectMenu : Panel
 		}
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastDetectiveMarker( Connection to, Vector3 corpseLocation )
 	{
 		if ( Connection.Local != to )
@@ -179,3 +179,4 @@ public partial class InspectMenu : Panel
 		);
 	}
 }
+

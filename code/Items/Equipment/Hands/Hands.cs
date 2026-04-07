@@ -14,7 +14,7 @@ public interface IGrabbable
 }
 
 [ClassName( "ttt_equipment_hands" )]
-[HideInEditor]
+[Hide]
 [Title( "Hands" )]
 public partial class Hands : Carriable
 {
@@ -38,7 +38,7 @@ public partial class Hands : Carriable
 	private const float PushForce = 350f;
 	private readonly Vector3 _maxPickupSize = new( 26, 22, 50 );
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( !Networking.IsHost )
 			return;

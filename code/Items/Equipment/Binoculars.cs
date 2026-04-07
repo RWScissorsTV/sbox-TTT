@@ -29,7 +29,7 @@ public partial class Binoculars : Carriable
 		ZoomLevel = 0;
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( Input.Pressed( InputAction.SecondaryAttack ) )
 			ChangeZoomLevel();

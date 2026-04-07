@@ -22,7 +22,7 @@ public partial class Knife : Carriable
 	private Rotation _throwRotation = Rotation.From( new Angles( 90, 0, 0 ) );
 	private float _gravityModifier;
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( TimeSinceStab < 1f )
 			return;
@@ -129,13 +129,13 @@ public partial class Knife : Carriable
 		WorldRotation = _thrower.EyeRotation * _throwRotation;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected void BroadcastSwingEffects()
 	{
 		ViewModelRenderer?.Set( "fire", true );
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void ThrowTick()
 	{
 		if ( !Networking.IsHost || !_isThrown )

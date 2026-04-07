@@ -9,8 +9,8 @@
 
 <root class="@(Player.FocusedButton == _roleButton ? "focus" : "")"
     style="left: @Length.Fraction( _screenPos.x ); top: @Length.Fraction( _screenPos.y )">
-    <text class="pointer" style="text-stroke: 2px @_roleInfo.Color.Hex" />
-    <text class="text-shadow">@_roleButton.Description</text>
+    <span class="pointer" style="text-stroke: 2px @_roleInfo.Color.Hex" />
+    <span class="text-shadow">@_roleButton.Description</span>
 </root>
 
 <style>

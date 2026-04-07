@@ -30,9 +30,9 @@ public partial class Bekas : Weapon
 		return TimeSincePrimaryAttack > (1 / rate);
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
-		base.Simulate( player );
+		base.Simulate();
 
 		if ( IsReloading && Input.Pressed( InputAction.PrimaryAttack ) )
 			_attackedDuringReload = true;
@@ -54,9 +54,10 @@ public partial class Bekas : Weapon
 		_attackedDuringReload = false;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected void BroadcastFinishReload()
 	{
 		ViewModelRenderer?.Set( "reload_finished", true );
 	}
 }
+

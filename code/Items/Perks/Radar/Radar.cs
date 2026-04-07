@@ -23,7 +23,7 @@ public partial class Radar : Perk
 			UI.WorldPoints.Instance?.DeletePoints<UI.RadarPoint>();
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void OnTick()
 	{
 		if ( !Networking.IsHost )
@@ -94,7 +94,7 @@ public partial class Radar : Perk
 		_cachedPoints.Clear();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public static void BroadcastRadarPositions( Connection to, RadarPointData[] points )
 	{
 		if ( Connection.Local != to )

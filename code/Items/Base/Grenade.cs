@@ -31,7 +31,7 @@ public abstract partial class Grenade : Carriable
 		return !_isThrown && base.CanCarry( carrier );
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( _throw == ThrowType.None )
 		{

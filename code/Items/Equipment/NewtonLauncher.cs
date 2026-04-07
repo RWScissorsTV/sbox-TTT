@@ -31,7 +31,7 @@ public partial class NewtonLauncher : Weapon
 		IsCharging = false;
 	}
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
 		if ( TimeSincePrimaryAttack < Info.PrimaryRate )
 			return;
@@ -83,15 +83,16 @@ public partial class NewtonLauncher : Weapon
 		hitPlayer.CharController.Punch( pushVel );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected void BroadcastChargeStart()
 	{
 		ViewModelRenderer?.Set( "charge", true );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected void BroadcastChargeFinished()
 	{
 		ViewModelRenderer?.Set( "charge_finished", true );
 	}
 }
+

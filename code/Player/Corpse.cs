@@ -188,7 +188,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 			SendKillInfo( player );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	public void BroadcastCorpseFound( Player finder, bool wasPreviouslyFound = false )
 	{
 		IsFound = true;
@@ -198,7 +198,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 			Event.Run( TTTEvent.Player.CorpseFound, Player );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSearch( Connection to, int creditsRetrieved = 0 )
 	{
 		if ( Connection.Local != to )
@@ -215,7 +215,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 		UI.InfoFeed.AddEntry( Player.Local, $"found {creditsRetrieved} credits!" );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSendMiscInfo( Connection to, Player[] killList, PerkInfo[] perks, string c4Note, string lastWords, TimeUntil dnaDecay )
 	{
 		if ( Connection.Local != to )
@@ -230,7 +230,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 		TimeUntilDNADecay = dnaDecay;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSendPlayer( Connection to, Player player )
 	{
 		if ( Connection.Local != to )
@@ -240,14 +240,14 @@ public sealed partial class Corpse : Component, ICarriableHint
 		Player.Corpse = this;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSendPlayerToAll( Player player )
 	{
 		Player = player;
 		Player.Corpse = this;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private void BroadcastSendDetectiveInfo( Connection to, Player player )
 	{
 		if ( Connection.Local != to )
@@ -277,7 +277,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 
 	bool ICarriableHint.CanHint( Player player ) => GameManager.Instance?.State is InProgress or PostRound;
 
-	Panel ICarriableHint.DisplayHint( Player player ) => new UI.CorpseHint( this );
+	Sandbox.UI.Panel ICarriableHint.DisplayHint( Player player ) => new UI.CorpseHint( this );
 
 	void ICarriableHint.Tick( Player player )
 	{

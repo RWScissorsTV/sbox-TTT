@@ -10,9 +10,9 @@ public class Poltergeist : Weapon
 {
 	private SceneTraceResult _trace;
 
-	public override void Simulate( Player player )
+	public override void Simulate()
 	{
-		base.Simulate( player );
+		base.Simulate();
 
 		_trace = Scene.Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * Player.MaxHintDistance )
 			.IgnoreGameObject( GameObject )

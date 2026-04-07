@@ -13,14 +13,14 @@
 		@if (Spectating.Player.IsValid())
 		{
 			<div class="swap-panel">
-				<text class="name"
-				  style="color: @Hud.DisplayedPlayer?.Role?.Color.Hex">@Hud.DisplayedPlayer?.SteamName</text>
+				<span class="name"
+				  style="color: @Hud.DisplayedPlayer?.Role?.Color.Hex">@Hud.DisplayedPlayer?.SteamName</span>
 				<div style="align-items: center;">
-					<text>Press</text>
+					<span>Press</span>
 					<InputGlyph action=@TTT.InputAction.PrimaryAttack />
-					<text>or</text>
+					<span>or</span>
 					<InputGlyph action=@TTT.InputAction.SecondaryAttack />
-					<text>to swap active player</text>
+					<span>to swap active player</span>
 				</div>
 			</div>
 		}
@@ -28,23 +28,23 @@
 		@if (!player.Prop.IsValid() && !Spectating.Player.IsValid())
 		{
 			<div style="align-items: center;">
-				<text>Press</text>
+				<span>Press</span>
 				<InputGlyph action=@TTT.InputAction.Use />
-				<text>to spectate a player or possess a prop</text>
+				<span>to spectate a player or possess a prop</span>
 			</div>
 		}
 
 		<div style="align-items: center;">
-			<text>Press</text>
+			<span>Press</span>
 			<InputGlyph action=@(player.Prop.IsValid() ? @TTT.InputAction.Duck : @TTT.InputAction.Jump) />
-			<text>@(player.Prop.IsValid() ? "to no longer possess the prop" : "to change spectating camera mode")</text>
+			<span>@(player.Prop.IsValid() ? "to no longer possess the prop" : "to change spectating camera mode")</span>
 		</div>
 
 		@if (player.LastAttacker?.Components.TryGet<TTT.Player>(out var attacker) == true && attacker != player)
 		{
 			<div class="report-panel background-color-primary rounded">
-				<text class="report-title">Report Last Killer</text>
-				<text>@attacker.SteamName (@attacker.Role.Title)</text>
+				<span class="report-title">Report Last Killer</span>
+				<span>@attacker.SteamName (@attacker.Role.Title)</span>
 				<TextEntry Value:bind=@ReportReason Placeholder="What happened?" class="report-entry" />
 				<button class="alt @(HasSubmittedReport ? "inactive" : "")" icon="report" @onclick=@SubmitRdmReport>
 					@(HasSubmittedReport ? "Report Submitted" : "Submit RDM Report")

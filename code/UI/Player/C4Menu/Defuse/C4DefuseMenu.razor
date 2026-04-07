@@ -1,9 +1,11 @@
+@using TTT.UI;
+
 @namespace TTT.UI
 
 <root class="text-shadow">
     <div class="container background-color-primary rounded">
-        <text class="header">C4 Defuse</text>
-        <text class="timer text-color-tertiary">@_timer</text>
+        <span class="header">C4 Defuse</span>
+        <span class="timer text-color-tertiary">@_timer</span>
         <div class="wires">
             @for (int i = 0; i < C4Entity.Wires.Count; i++)
             {

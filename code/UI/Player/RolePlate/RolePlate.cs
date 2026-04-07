@@ -21,7 +21,7 @@ public partial class RolePlate : Component
 		_roleWorldPanel = null;
 	}
 
-	[GameEvent.Tick]
+	[Event.Tick]
 	private void FrameUpdate()
 	{
 		var player = Components.Get<Player>( FindMode.InSelf );

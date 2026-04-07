@@ -175,7 +175,7 @@ public abstract partial class Weapon : Carriable
 		AmmoClip += TakeAmmo( Info.ClipSize - AmmoClip );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected virtual void BroadcastShootEffects()
 	{
 		if ( !Info.MuzzleFlashParticle.IsNullOrEmpty() )
@@ -189,13 +189,13 @@ public abstract partial class Weapon : Carriable
 		CurrentRecoil += RecoilOnShoot;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected virtual void BroadcastDryFireEffects()
 	{
 		ViewModelRenderer?.Set( "dryfire", true );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	protected virtual void BroadcastReloadEffects()
 	{
 		ViewModelRenderer?.Set( "reload", true );

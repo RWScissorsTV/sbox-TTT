@@ -19,7 +19,7 @@
         <text class="section-title">Open Cases</text>
         @if (!Reports.Any(report => report.TribunalEndsAt is not null))
         {
-            <text class="empty">No tribunal cases are currently open.</text>
+            <span class="empty">No tribunal cases are currently open.</span>
         }
         else
         {
@@ -54,10 +54,10 @@
     </div>
 
     <div class="section background-color-secondary rounded">
-        <text class="section-title">Closed Cases</text>
+        <span class="section-title">Closed Cases</span>
         @if (!Reports.Any(report => report.TribunalEndsAt is null && report.TribunalVerdict != TribunalVerdict.None))
         {
-            <text class="empty">No closed tribunal cases yet.</text>
+            <span class="empty">No closed tribunal cases yet.</span>
         }
         else
         {

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TTT;
 
-#if DEBUG
+#if false
 public partial class DebugBot : Bot
 {
 	private Player _pawn;

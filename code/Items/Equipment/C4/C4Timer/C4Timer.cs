@@ -5,7 +5,7 @@ namespace TTT.UI;
 
 // WorldPanel migration deferred to UI pass.
 // C4Timer is positioned at the "timer" attachment on the C4 model.
-public partial class C4Timer : Panel
+public partial class C4Timer : WorldPanel
 {
 	private readonly C4Entity _c4;
 

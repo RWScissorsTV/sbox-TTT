@@ -420,7 +420,7 @@ public partial class GameManager
 		SaveModerationData();
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastModerationSnapshot( Connection to, string reportsJson, string logsJson, string playersJson )
 	{
 		if ( Connection.Local != to )
@@ -429,7 +429,7 @@ public partial class GameManager
 		UI.AdminPage.ReceiveSnapshot( reportsJson, logsJson, playersJson );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastAdminAccess( Connection to, bool hasAccess )
 	{
 		if ( Connection.Local != to )
@@ -438,7 +438,7 @@ public partial class GameManager
 		LocalClientHasAdminAccess = hasAccess;
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastTribunalSnapshot( string reportsJson )
 	{
 		UI.TribunalPage.ReceiveSnapshot( reportsJson );
@@ -928,7 +928,7 @@ public partial class GameManager
 		ApplyCurrentPunishmentState( player );
 	}
 
-	[Broadcast]
+	[Rpc.Broadcast]
 	private static void BroadcastChatEntry( Connection to, string message )
 	{
 		if ( Connection.Local != to )
@@ -937,3 +937,4 @@ public partial class GameManager
 		UI.TextChat.AddInfoEntry( message );
 	}
 }
+
