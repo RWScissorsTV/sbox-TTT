@@ -1,5 +1,4 @@
 using Sandbox;
-using Sandbox.Physics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,6 +60,10 @@ public sealed partial class Corpse : Component, ICarriableHint
 		var corpse = go.Components.Create<Corpse>();
 		corpse.Player = player;
 		corpse.HasCredits = player.Credits > 0;
+
+		// Launch the ragdoll using the force stored at death time.
+		var deathImpulse = BuildDeathImpulse( player );
+		ApplyImpulseToCorpse( physics, deathImpulse );
 
 		// Attach DNA if killed by bullet
 		if ( player.LastDamage.HasTag( DamageTags.Bullet )
@@ -176,6 +179,29 @@ public sealed partial class Corpse : Component, ICarriableHint
 			BroadcastSendDetectiveInfo( connection, Player.LastSeenPlayer );
 	}
 
+	private static Vector3 BuildDeathImpulse( Player player )
+	{
+		var impulse = player.LastDamage.Force;
+
+		if ( impulse.LengthSquared <= 0.001f )
+			return Vector3.Zero;
+
+		var maxImpulse = 3000f;
+		if ( impulse.Length > maxImpulse )
+			impulse = impulse.Normal * maxImpulse;
+
+		return impulse;
+	}
+
+	private static void ApplyImpulseToCorpse( ModelPhysics physics, Vector3 impulse )
+	{
+		if ( physics?.PhysicsGroup is null || impulse.LengthSquared <= 0.001f )
+			return;
+
+		physics.PhysicsGroup.Sleeping = false;
+		physics.PhysicsGroup.ApplyImpulse( impulse );
+	}
+
 	public void SendKillInfoToAll()
 	{
 		if ( !Networking.IsHost )
@@ -185,7 +211,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 			SendKillInfo( player );
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	public void BroadcastCorpseFound( Player finder, bool wasPreviouslyFound = false )
 	{
 		IsFound = true;
@@ -195,7 +221,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 			Event.Run( TTTEvent.Player.CorpseFound, Player );
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	private void BroadcastSearch( Connection to, int creditsRetrieved = 0 )
 	{
 		if ( Connection.Local != to )
@@ -212,7 +238,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 		UI.InfoFeed.AddEntry( Player.Local, $"found {creditsRetrieved} credits!" );
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	private void BroadcastSendMiscInfo( Connection to, Player[] killList, PerkInfo[] perks, string c4Note, string lastWords, TimeUntil dnaDecay )
 	{
 		if ( Connection.Local != to )
@@ -227,7 +253,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 		TimeUntilDNADecay = dnaDecay;
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	private void BroadcastSendPlayer( Connection to, Player player )
 	{
 		if ( Connection.Local != to )
@@ -237,14 +263,14 @@ public sealed partial class Corpse : Component, ICarriableHint
 		Player.Corpse = this;
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	private void BroadcastSendPlayerToAll( Player player )
 	{
 		Player = player;
 		Player.Corpse = this;
 	}
 
-	[Rpc.Broadcast]
+	[Broadcast]
 	private void BroadcastSendDetectiveInfo( Connection to, Player player )
 	{
 		if ( Connection.Local != to )
@@ -274,7 +300,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 
 	bool ICarriableHint.CanHint( Player player ) => GameManager.Instance?.State is InProgress or PostRound;
 
-	Sandbox.UI.Panel ICarriableHint.DisplayHint( Player player ) => new UI.CorpseHint( this );
+	Panel ICarriableHint.DisplayHint( Player player ) => new UI.CorpseHint( this );
 
 	void ICarriableHint.Tick( Player player )
 	{
@@ -305,7 +331,7 @@ public sealed partial class Corpse : Component, ICarriableHint
 		if ( GetSearchButton() == InputAction.PrimaryAttack )
 			return true;
 
-		return true;
+		return player.CanUse( this );
 	}
 
 	public static string GetSearchButton()
