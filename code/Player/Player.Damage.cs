@@ -128,6 +128,13 @@ public partial class Player
 
 		info = info.WithDamage( Math.Min( Health, info.Damage ) );
 
+		if ( !info.HasTag( DamageTags.Bullet )
+			&& !info.HasTag( DamageTags.Blast )
+			&& !info.HasTag( DamageTags.Slash ) )
+		{
+			info = info.WithForce( BuildImpactForce( info ) );
+		}
+
 		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
 		LastAttackerWeaponInfo = info.Weapon?.Components.Get<Carriable>()?.Info;
@@ -140,6 +147,34 @@ public partial class Player
 
 		if ( Health <= 0f )
 			OnKilled();
+	}
+
+	private static Vector3 BuildImpactForce( DamageInfo info )
+	{
+		var force = info.Force;
+
+		if ( info.Attacker is not GameObject attackerGo )
+			return force;
+
+		if ( !attackerGo.Components.TryGet<Rigidbody>( out var rigidbody ) )
+			return force;
+
+		if ( rigidbody.PhysicsBody is null )
+			return force;
+
+		var pointVelocity = rigidbody.GetVelocityAtPoint( info.Position );
+		if ( pointVelocity.LengthSquared <= 0.001f )
+			return force;
+
+		var mass = Math.Clamp( rigidbody.PhysicsBody.Mass, 5f, 150f );
+
+		force += pointVelocity * mass * 0.20f;
+
+		var maxForce = 3000f;
+		if ( force.Length > maxForce )
+			force = force.Normal * maxForce;
+
+		return force;
 	}
 
 	private void CreateBloodSplatter( DamageInfo info, float maxDistance )
