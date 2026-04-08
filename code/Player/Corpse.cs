@@ -62,6 +62,10 @@ public sealed partial class Corpse : Component, ICarriableHint
 		corpse.Player = player;
 		corpse.HasCredits = player.Credits > 0;
 
+		// Apply the stored death force to the ragdoll.
+		var deathImpulse = BuildDeathImpulse( player );
+		ApplyImpulseToCorpse( physics, deathImpulse );
+
 		// Attach DNA if killed by bullet
 		if ( player.LastDamage.HasTag( DamageTags.Bullet )
 			&& player.LastAttacker?.Components.TryGet<Player>( out var killer ) == true )
@@ -174,6 +178,29 @@ public sealed partial class Corpse : Component, ICarriableHint
 
 		if ( searcher.Role is Detective )
 			BroadcastSendDetectiveInfo( connection, Player.LastSeenPlayer );
+	}
+
+	private static Vector3 BuildDeathImpulse( Player player )
+	{
+		var impulse = player.LastDamage.Force;
+
+		if ( impulse.LengthSquared <= 0.001f )
+			return Vector3.Zero;
+
+		var maxImpulse = 3000f;
+		if ( impulse.Length > maxImpulse )
+			impulse = impulse.Normal * maxImpulse;
+
+		return impulse;
+	}
+
+	private static void ApplyImpulseToCorpse( ModelPhysics physics, Vector3 impulse )
+	{
+		if ( physics?.PhysicsGroup is null || impulse.LengthSquared <= 0.001f )
+			return;
+
+		physics.PhysicsGroup.Sleeping = false;
+		physics.PhysicsGroup.ApplyImpulse( impulse );
 	}
 
 	public void SendKillInfoToAll()
